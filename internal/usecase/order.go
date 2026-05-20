@@ -41,7 +41,7 @@ func (uc *OrderUseCase) Delete(id int64) error {
 }
 
 // AssignOptimal решает задачу назначения венгерским алгоритмом:
-// минимизирует суммарное евклидово расстояние курьер→заказ.
+// минимизирует суммарное евклидово расстояние курьер-заказ.
 // Назначает курьеров на pending-заказы и сохраняет результат в БД.
 func (uc *OrderUseCase) AssignOptimal() ([]AssignmentResult, error) {
 	orders, err := uc.orderRepo.ListPending()
@@ -60,7 +60,7 @@ func (uc *OrderUseCase) AssignOptimal() ([]AssignmentResult, error) {
 		return nil, domain.ErrNoFreeCouriers
 	}
 
-	// Строим матрицу стоимостей: строки — курьеры, столбцы — заказы
+	// Строим матрицу стоимостей: строки - курьеры, столбцы - заказы
 	cost := make([][]float64, len(couriers))
 	for i, courier := range couriers {
 		cost[i] = make([]float64, len(orders))

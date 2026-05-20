@@ -1,11 +1,12 @@
 package http
 
 import (
-	"delivery-service/internal/domain"
-	"delivery-service/internal/usecase"
 	"encoding/json"
 	"errors"
 	"net/http"
+
+	"delivery-service/internal/domain"
+	"delivery-service/internal/usecase"
 
 	"github.com/go-chi/chi/v5"
 )
